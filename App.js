@@ -1,20 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Pressable, Text, View } from 'react-native';
+import Home from './screens/Home';
+import Me from './screens/Me';
+import Jobs from './screens/Jobs';
+import { appStyles } from './styles/globalStyles';
+
+const screens = {
+  Home,
+  Me,
+  Jobs,
+};
 
 export default function App() {
+  const [activeScreen, setActiveScreen] = useState('Home');
+  const Screen = screens[activeScreen];
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={appStyles.container}>
+      <View style={appStyles.content}>
+        <Screen onNavigate={setActiveScreen} />
+      </View>
+
+      <View style={appStyles.tabBar}>
+        {Object.keys(screens).map((screenName) => (
+          <Pressable
+            key={screenName}
+            style={appStyles.tab}
+            onPress={() => setActiveScreen(screenName)}
+          >
+            <Text
+              style={[
+                appStyles.tabText,
+                activeScreen === screenName && appStyles.activeTabText,
+              ]}
+            >
+              {screenName}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
