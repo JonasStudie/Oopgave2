@@ -11,6 +11,7 @@ import { get, onValue, ref } from 'firebase/database';
 import { rtdb } from '../database/database';
 import { jobsStyles } from '../styles/globalStyles';
 
+// Eksempler på ledige job med uddannelseskrav og korte beskrivelser.
 const jobs = [
   {
     id: '1',
@@ -195,6 +196,7 @@ export default function Jobs({ onApply }) {
   const [filterPickerVisible, setFilterPickerVisible] = useState(false);
   const [appliedJobIds, setAppliedJobIds] = useState([]);
 
+  // Holder listen over allerede søgte job opdateret fra databasen.
   useEffect(() => {
     const unsubscribe = onValue(ref(rtdb, 'applications'), (snapshot) => {
       const applications = snapshot.val() || {};
@@ -206,6 +208,7 @@ export default function Jobs({ onApply }) {
     return unsubscribe;
   }, []);
 
+  // Vælger alle job eller job, der matcher brugerens uddannelse.
   const selectFilterMode = async (mode) => {
     setFilterPickerVisible(false);
 
@@ -230,6 +233,7 @@ export default function Jobs({ onApply }) {
     (job) => !appliedJobIds.includes(job.id)
   );
 
+  // Viser filtrene og de job, brugeren endnu ikke har søgt.
   const listHeader = (
     <View>
       <Text style={jobsStyles.title}>Find a job for you</Text>
@@ -316,4 +320,3 @@ export default function Jobs({ onApply }) {
     </>
   );
 }
-

@@ -12,6 +12,7 @@ import { get, ref, remove, set } from 'firebase/database';
 import { rtdb } from '../database/database';
 import { meStyles } from '../styles/globalStyles';
 
+// Uddannelser, som brugeren kan vælge i profilformularen.
 const educationOptions = [
   'STX',
   'HHX',
@@ -48,6 +49,7 @@ export default function Me() {
   const [deleteAccountVisible, setDeleteAccountVisible] = useState(false);
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
 
+  // Henter den gemte profil, når skærmen åbnes.
   useEffect(() => {
     const loadProfile = async () => {
       try {
@@ -70,6 +72,7 @@ export default function Me() {
     loadProfile();
   }, []);
 
+  // Gemmer profilfelterne samlet i databasen.
   const saveProfile = async () => {
     setIsSaving(true);
     try {
@@ -90,6 +93,7 @@ export default function Me() {
     }
   };
 
+  // Sletter de gemte oplysninger efter brugerens bekræftelse.
   const deleteAccount = async () => {
     setIsDeletingAccount(true);
     try {
@@ -260,4 +264,3 @@ export default function Me() {
     </ScrollView>
   );
 }
-

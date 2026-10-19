@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+// Fælles layout og typografi for appens navigation og velkomstskærm.
 export const appStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -82,6 +83,7 @@ export const homeStyles = StyleSheet.create({
   },
 });
 
+// Formular- og visningsstile til brugerens profil.
 export const meStyles = StyleSheet.create({
   container: {
     padding: 28,
@@ -260,6 +262,7 @@ export const meStyles = StyleSheet.create({
   },
 });
 
+// Stile til joboversigt, ansøgning og oversigten over indsendte ansøgninger.
 export const jobsStyles = StyleSheet.create({
   container: {
     padding: 20,

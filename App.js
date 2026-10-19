@@ -7,6 +7,7 @@ import Application from './screens/Application';
 import Applications from './screens/Applications';
 import { appStyles } from './styles/globalStyles';
 
+// Skærmene, der kan åbnes fra appens navigationsmenu.
 const screens = {
   Home,
   Me,
@@ -15,15 +16,18 @@ const screens = {
 };
 
 export default function App() {
+  // Gemmer den aktive skærm og jobbet, der er valgt til en ansøgning.
   const [activeScreen, setActiveScreen] = useState('Home');
   const [selectedJob, setSelectedJob] = useState(null);
   const Screen = screens[activeScreen];
 
+  // Åbner ansøgningsskærmen med det valgte job.
   const openApplication = (job) => {
     setSelectedJob(job);
     setActiveScreen('Apply');
   };
 
+  // Viser enten indholdsskærmen eller ansøgningsforløbet samt fanerne.
   return (
     <View style={appStyles.container}>
       <View style={appStyles.content}>
@@ -61,4 +65,3 @@ export default function App() {
     </View>
   );
 }
-

@@ -2,6 +2,7 @@ import { Pressable, Text, View } from 'react-native';
 import { homeStyles } from '../styles/globalStyles';
 
 export default function Home({ onNavigate }) {
+  // Introducerer appen og dens muligheder for brugeren.
   return (
     <View style={homeStyles.container}>
       <View style={homeStyles.introduction}>
@@ -12,8 +13,10 @@ export default function Home({ onNavigate }) {
           suits you perfectly.
         </Text>
       </View>
+      /* Genveje til joboversigten og brugerens profil. */
 
       <View style={homeStyles.actions}>
+        {}
         <Pressable
           style={homeStyles.primaryButton}
           onPress={() => onNavigate('Jobs')}
@@ -30,4 +33,3 @@ export default function Home({ onNavigate }) {
     </View>
   );
 }
-

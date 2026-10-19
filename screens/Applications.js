@@ -18,6 +18,7 @@ export default function Applications() {
   const [applicationToDelete, setApplicationToDelete] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Lytter efter ansøgninger og sorterer dem 
   useEffect(() => {
     const applicationsRef = ref(rtdb, 'applications');
     const unsubscribe = onValue(
@@ -39,6 +40,7 @@ export default function Applications() {
     return unsubscribe;
   }, []);
 
+  // Sletter den valgte ansøgning og viser fejl, hvis det mislykkes.
   const deleteApplication = async () => {
     if (!applicationToDelete) return;
 
@@ -53,6 +55,7 @@ export default function Applications() {
     }
   };
 
+  // Viser ansøgningerne og beder om bekræftelse før sletning.
   return (
     <>
       <FlatList

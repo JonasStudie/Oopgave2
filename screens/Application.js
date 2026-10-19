@@ -18,6 +18,7 @@ export default function Application({ job, onBack, onSubmitted }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Henter profiloplysninger, der skal følge med ansøgningen.
   useEffect(() => {
     const loadProfile = async () => {
       try {
@@ -33,6 +34,7 @@ export default function Application({ job, onBack, onSubmitted }) {
     loadProfile();
   }, []);
 
+  // Gemmer job, ansøgeroplysninger og besked som en ny ansøgning.
   const submitApplication = async () => {
     if (!profile) {
       Alert.alert('Profile required', 'Add your information in the Me tab before applying.');
@@ -68,6 +70,7 @@ export default function Application({ job, onBack, onSubmitted }) {
     }
   };
 
+  // Viser jobdetaljer, profiloplysninger og beskedfelt.
   return (
     <ScrollView contentContainerStyle={applicationStyles.container}>
       <Pressable style={applicationStyles.backButton} onPress={onBack}>
